@@ -13,9 +13,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug)
     {
-        //
+        $info = AdditionalInformation::where('slug','=',$slug)->first();
+        $user = User::find($info->user_id);
+        return view('user',compact('user'));
     }
 
     /**
@@ -56,7 +58,7 @@ class UserController extends Controller
     public function edit()
     {
         $user = auth()->user();
-        return view('editPage',compact('user'));
+        return view('auth.user.editPage',compact('user'));
     }
 
 

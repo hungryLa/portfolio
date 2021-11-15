@@ -1,6 +1,6 @@
 @extends("layouts.master")
 
-@section("title")Портфолио@endsection
+@section("title")Портфолио {{$user->SFname()}}@endsection
 
 @section("asside")
     @include('inc.asside')
@@ -8,7 +8,7 @@
 
 @section("content")
     <h1>Porfolio</h1>
-    @foreach($model->contents as $content)
+    @foreach($user->files as $file)
         @include('card',compact('content'))
     @endforeach
 @endsection
